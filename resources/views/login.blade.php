@@ -2,14 +2,14 @@
 <div class="columns is-allcentered">
     <div class="column is-4">  
         <div class="box">
-            <form method="post">
+            <form method="post" action="/login" onsubmit="return $(this).loadPageOn('#content');">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="content has-text-centered">
                     @lang('login.title')
                 </div>
                 <div class="field">
                     <div class="control has-icons-left has-icons-right">
-                        <input name="email" class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="email" placeholder="@lang('login.email')" value="{{ old('email') }}" autocomplete="off" />
+                        <input name="email" class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="email" placeholder="@lang('login.email')" value="{{ old('email') }}" autocomplete="off" maxlength="100" />
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                         </span>
@@ -19,10 +19,11 @@
                             </span>
                         @endif
                     </div>
+                    <p class="help is-danger">{{ $errors->first('email') }}</p>
                 </div>
                 <div class="field">
                     <div class="control has-icons-left has-icons-right">
-                        <input name="password" class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password" placeholder="@lang('login.password')" />
+                        <input name="password" class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password" placeholder="@lang('login.password')" maxlength="50" />
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
@@ -32,6 +33,7 @@
                             </span>
                         @endif
                     </div>
+                    <p class="help is-danger">{{ $errors->first('password') }}</p>
                 </div>
                 <div class="field">
                     <div class="columns">
@@ -54,7 +56,7 @@
             <hr>
             <div class="has-text-centered">
                 @lang('login.register.text')
-                <a href="#">
+                <a href="/register" onclick="return $(this).loadPageOn('#content');">
                     @lang('login.register.link')
                 </a>
             </div>

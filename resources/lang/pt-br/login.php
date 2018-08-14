@@ -10,5 +10,13 @@ return [
     'register'      => [
         'text'      => 'Primeiro acesso?',
         'link'      => 'Clique aqui para se cadastrar.'
+    ],
+    'error'         => [
+        'title'          => 'Erro',
+        'text'           => 'Dados incorretos.<br>Tente novamente.',
+        'email'          => 'Digite o seu e-mail.',
+        'check_email'    => 'Verifique o seu e-mail.',
+        'password'       => 'Digite a sua senha.',
+        'check_password' => 'Verifique a sua senha.'
     ]
 ];

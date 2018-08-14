@@ -10806,7 +10806,7 @@ $.ajaxSetup({
     }
 });
 
-$.fn.request = function (type) {
+$.fn.loadPageOn = function (local) {
     var type, url, data;
 
     if ($(this).is('form')) {
@@ -10823,11 +10823,8 @@ $.fn.request = function (type) {
         method: type,
         url: url,
         data: data,
-        dataType: 'json',
         success: function success(response) {
-            for (var key in response) {
-                $(key).html(response[key]);
-            }
+            $(local).html(response);
         },
         error: function error(response) {
             console.error(response.responseText);

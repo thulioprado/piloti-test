@@ -11,6 +11,7 @@
 <body>
     <div id="content" class="container is-fullhd">
         @if (Auth::check())
+            @include('panel.index')
         @else
             @include('login')
         @endif
