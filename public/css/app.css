@@ -16448,8 +16448,27 @@ body {
           align-items: center;
 }
 
-hr {
+hr,
+.navbar-divider {
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #eee;
+}
+
+#logo {
+  background: url(/images/logo.png?025ec044cf1dc80e12063caa3b5a6129) center no-repeat;
+  background-size: auto 187px;
+  height: 230px;
+  width: 500px;
+  margin: auto calc((100% - 500px) / 2);
+}
+
+#main {
+  height: calc(100% - 280px);
+}
+
+#panel-content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: calc(100% - 52px);
 }
 

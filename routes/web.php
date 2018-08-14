@@ -19,16 +19,13 @@ Route::get('/', function () {
  * Guest routes
  */
 Route::middleware(['guest', 'ajax'])->group(function() {
-    
-    Route::prefix('login')->group(function() {
-        Route::get('/', 'LoginController@index');
-        Route::post('/', 'LoginController@login');
-    });
 
-    Route::prefix('register')->group(function() {
-        Route::get('/', 'RegisterController@index');
-        Route::post('/', 'RegisterController@save');
-    });
+    Route::get('login', 'LoginController@index');
+    Route::post('login', 'LoginController@login');
+    
+    Route::get('register', 'RegisterController@index');
+    Route::post('register', 'RegisterController@save');
+
 });
 
 /**
@@ -37,8 +34,12 @@ Route::middleware(['guest', 'ajax'])->group(function() {
 Route::middleware(['auth', 'ajax'])->group(function() {
 
     Route::prefix('panel')->group(function() {
-        Route::get('/', 'PanelController@index');
-        Route::get('/logout', 'PanelController@logout');
-    });
 
+        Route::get('/', 'PanelController@index');
+        Route::get('logout', 'PanelController@logout');
+        
+        Route::get('profile', 'PanelController@profile');
+        Route::post('profile', 'PanelController@save_profile');
+
+    });
 });
