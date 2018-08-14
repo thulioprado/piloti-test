@@ -1,13 +1,52 @@
 /**
- * axios
- */
-window.axios = require('axios');
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+ * jquery
+ **/
+window.$ = window.jQuery = require('jquery');
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+$.fn.request = function(type) {
+    var type, url, data;
+
+    if ($(this).is('form')) {
+        type = 'post';
+        url  = $(this).attr('action');
+        data = $(this).serialize();
+    } else {
+        type = 'get';
+        url  = $(this).attr('href');
+        data = {};
+    }
+
+    $.ajax({
+        method:   type,
+        url:      url,
+        data:     data,
+        dataType: 'json',
+        success: function(response) {
+            for (var key in response) {
+                $(key).html(response[key]);
+            }
+        },
+        error: function(response) {
+            console.error(response.responseText);
+        }
+    });
+
+    return false;
+};
+
+/**
+ * pace
+ **/
+window.paceOptions = {
+    ajax: {
+        trackMethods: ['GET', 'POST', 'PUT', 'DELETE', 'REMOVE']
+    }
+};
+
+window.pace = require('./pace');

@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::middleware(['guest', 'ajax'])->group(function() {
+});
