@@ -6,7 +6,7 @@
             <div class="hero-head">
                 <nav class="navbar">
                     <div class="navbar-start">
-                        <a class="navbar-item is-tab is-active" href="/panel" onclick="return $(this).loadPageOn('#panel-content');">
+                        <a class="navbar-item is-tab is-active" href="/panel" onclick="$(this).activeThis('.navbar'); return $(this).loadPageOn('#panel-content');">
                             <span class="icon is-medium">
                                 <i class="fas fa-home"></i>
                             </span>
@@ -15,7 +15,7 @@
                             </span>
                         </a>
                         @if (Auth::user()->is_admin)
-                            <a class="navbar-item is-tab" href="/panel/admin" onclick="return $(this).loadPageOn('#panel-content');">
+                            <a class="navbar-item is-tab" href="/panel/admin" onclick="$(this).activeThis('.navbar'); return $(this).loadPageOn('#panel-content');">
                                 <span class="icon is-medium">
                                     <i class="fas fa-user-tie"></i>
                                 </span>
@@ -34,14 +34,14 @@
                                 <span style="padding-left: 3px">{{ Auth::user()->name }}</span>
                             </a>
                             <div class="navbar-dropdown is-right">
-                                <a class="navbar-item" href="/panel/profile" onclick="return $(this).loadPageOn('#panel-content');">
+                                <a class="navbar-item" href="/panel/profile" onclick="$(this).activeThis('.navbar'); return $(this).loadPageOn('#panel-content');">
                                     <span class="icon is-small">
                                         <i class="fas fa-user"></i>
                                     </span>
                                     <span style="padding-left: 3px">@lang('panel.menu.profile')</span>
                                 </a>
                                 <hr class="navbar-divider">
-                                <a class="navbar-item" href="/panel/logout" onclick="return $(this).loadPageOn('#content');">
+                                <a class="navbar-item" href="/panel/logout" onclick="$(this).activeThis('.navbar');return $(this).loadPageOn('#content');">
                                     <span class="icon is-small">
                                         <i class="fas fa-power-off"></i>
                                     </span>
@@ -53,7 +53,7 @@
                 </nav>
             </div>
         </header>
-        <div id="panel-content" class="box">
+        <div id="panel-content" class="box has-overflow-y">
             @include('panel.welcome')
             @yield('panel-content')        
         </div>

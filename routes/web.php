@@ -18,7 +18,9 @@ Route::get('/', function () {
 /**
  * Guest routes
  */
-Route::middleware(['guest', 'ajax'])->group(function() {
+Route::group([
+    'middleware' => ['guest', 'ajax']
+], function() {
 
     Route::get('login', 'LoginController@index');
     Route::post('login', 'LoginController@login');
@@ -31,15 +33,31 @@ Route::middleware(['guest', 'ajax'])->group(function() {
 /**
  * User routes
  */
-Route::middleware(['auth', 'ajax'])->group(function() {
+Route::group([
+    'middleware' => ['auth', 'ajax'],
+    'prefix'     => 'panel'
+], function() {
 
-    Route::prefix('panel')->group(function() {
+    Route::get('/', 'PanelController@index');
+    Route::get('logout', 'PanelController@logout');
+    
+    Route::get('profile', 'PanelController@profile');
+    Route::post('profile', 'PanelController@save_profile');
 
-        Route::get('/', 'PanelController@index');
-        Route::get('logout', 'PanelController@logout');
-        
-        Route::get('profile', 'PanelController@profile');
-        Route::post('profile', 'PanelController@save_profile');
+    Route::group([
+        'middleware' => 'admin',
+        'prefix'     => 'admin'
+    ], function() {
+
+        Route::get('/', 'AdminController@index');
+        Route::get('users', 'AdminController@users');
+        Route::get('deleted', 'AdminController@deleted');
+        Route::get('edit/{id}', 'AdminController@edit');
+        Route::post('edit/{id}', 'AdminController@save');
+        Route::get('delete/{id}', 'AdminController@confirm');
+        Route::post('delete/{id}', 'AdminController@delete');
+        Route::get('restore/{id}', 'AdminController@restore');
 
     });
+
 });

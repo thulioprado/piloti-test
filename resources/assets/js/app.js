@@ -37,6 +37,11 @@ $.fn.loadPageOn = function(local) {
     return false;
 };
 
+$.fn.activeThis = function(from) {
+    $(from).find('*').removeClass('is-active');
+    $(this).addClass('is-active');
+};
+
 /**
  * pace
  **/

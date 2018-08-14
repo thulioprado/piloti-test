@@ -58,7 +58,7 @@ class PanelController extends Controller
         $validator = Validator::make($request->all(), [
             'name'      => 'required|min:5|max:50|regex:/^[\p{L} .\'-]+$/',
             'email'     => 'required|email|max:100',
-            'password'  => 'required|max:50',
+            'password'  => 'required|min:6|max:50',
             'npassword' => 'nullable|min:6|max:50|different:password',
             'cpassword' => 'same:npassword',
         ], [

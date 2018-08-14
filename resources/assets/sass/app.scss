@@ -73,3 +73,11 @@ hr, .navbar-divider {
     border-top-right-radius: 0;
     height: calc(100% - 52px);
 }
+
+.has-overflow-x {
+    overflow-x: auto;
+}
+
+.has-overflow-y {
+    overflow-y: auto;
+}

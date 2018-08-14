@@ -2,7 +2,7 @@
 <p class="has-text-centered">
     <span class="tag is-black">@lang('panel.profile.title')</span>
 </p>
-<hr>
+<br>
 <form action="/panel/profile" method="post" onsubmit="return $(this).loadPageOn('#panel-content');">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="field is-horizontal">
@@ -121,15 +121,15 @@
     </div>
 </form>
 @isset($success)
-<br>
-@if ($success)
-<div class="notification is-success">
-    @lang('panel.profile.success')
-</div>
-@else
-<div class="notification is-danger">
-    @lang('panel.profile.failed')
-</div>
-@endif
+    <br>
+    @if ($success)
+        <div class="notification is-success">
+            @lang('panel.profile.success')
+        </div>
+    @else
+        <div class="notification is-danger">
+            @lang('panel.profile.failed')
+        </div>
+    @endif
 @endisset
 @endsection

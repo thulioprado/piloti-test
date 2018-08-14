@@ -32,5 +32,41 @@ return [
             'password'          => 'Insira sua senha atual.',
             'invalid_password'  => 'Senha atual inválida.'
         ]
+    ],
+
+    'admin'         => [
+        'see_users'     => 'Ver usuários',
+        'see_deleted'   => 'Ver deletados',
+        'name'          => 'Nome',
+        'email'         => 'E-mail',
+        'is_admin'      => 'Admin?',
+        'actions'       => 'Ações',
+        'see'           => 'Ver',
+        'change'        => 'Editar',
+        'erase'         => 'Deletar',
+        'restore'       => 'Restaurar',
+        'empty'         => 'Nada para mostrar.',
+
+        'edit'          => [
+            'title'     => 'Editando dados de :name',
+            'name'      => 'Nome',
+            'email'     => 'E-mail',
+            'password'  => 'Senha',
+            'edit'      => 'Editar',
+            'data_fail' => 'Falha ao obter os dados de usuário.',
+            'success'   => 'Os dados do usuário foram alterados com sucesso.',
+            'failed'    => 'Não foi possível alterar os dados do usuário.'
+        ],
+
+        'delete'        => [
+            'title'         => 'Deletando dados de :name',
+            'confirmation'  => 'Você realmente deseja apagar os dados de :name?',
+            'yes'           => 'Sim',
+            'no'            => 'Não',
+            'data_fail'     => 'Falha ao obter os dados de usuário.',
+            'success'       => 'Registro deletado com sucesso.'
+        ]
+        
     ]
+
 ];
