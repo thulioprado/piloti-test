@@ -1,10 +1,10 @@
 # Piloti Test
 
 ### Pré-requisitos
-Laravel 5+
-MySQL
-Git
-NPM
+* Laravel 5+
+* MySQL
+* Git
+* NPM
 
 ### Instalação
 Clone o repositório utilizando o comando:
