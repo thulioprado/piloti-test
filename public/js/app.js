@@ -60,19 +60,78 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 29:
-/***/ (function(module, exports) {
+__webpack_require__(1);
+module.exports = __webpack_require__(4);
 
-// removed by extract-text-webpack-plugin
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 50:
+/**
+ * jquery
+ **/
+window.$ = window.jQuery = __webpack_require__(2);
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$.fn.loadPageOn = function (local) {
+    var type, url, data;
+
+    if ($(this).is('form')) {
+        type = 'post';
+        url = $(this).attr('action');
+        data = $(this).serialize();
+    } else {
+        type = 'get';
+        url = $(this).attr('href');
+        data = {};
+    }
+
+    $.ajax({
+        method: type,
+        url: url,
+        data: data,
+        success: function success(response) {
+            $(local).html(response);
+        },
+        error: function error(response) {
+            console.error(response.responseText);
+        }
+    });
+
+    return false;
+};
+
+$.fn.activeThis = function (from) {
+    $(from).find('*').removeClass('is-active');
+    $(this).addClass('is-active');
+};
+
+/**
+ * pace
+ **/
+window.paceOptions = {
+    ajax: {
+        trackMethods: ['GET', 'POST', 'PUT', 'DELETE', 'REMOVE']
+    }
+};
+
+window.pace = __webpack_require__(3);
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10443,8 +10502,7 @@ return jQuery;
 
 
 /***/ }),
-
-/***/ 51:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -10782,74 +10840,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && 
 }).call(this);
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports) {
 
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(8);
-module.exports = __webpack_require__(29);
-
-
-/***/ }),
-
-/***/ 8:
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * jquery
- **/
-window.$ = window.jQuery = __webpack_require__(50);
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-$.fn.loadPageOn = function (local) {
-    var type, url, data;
-
-    if ($(this).is('form')) {
-        type = 'post';
-        url = $(this).attr('action');
-        data = $(this).serialize();
-    } else {
-        type = 'get';
-        url = $(this).attr('href');
-        data = {};
-    }
-
-    $.ajax({
-        method: type,
-        url: url,
-        data: data,
-        success: function success(response) {
-            $(local).html(response);
-        },
-        error: function error(response) {
-            console.error(response.responseText);
-        }
-    });
-
-    return false;
-};
-
-$.fn.activeThis = function (from) {
-    $(from).find('*').removeClass('is-active');
-    $(this).addClass('is-active');
-};
-
-/**
- * pace
- **/
-window.paceOptions = {
-    ajax: {
-        trackMethods: ['GET', 'POST', 'PUT', 'DELETE', 'REMOVE']
-    }
-};
-
-window.pace = __webpack_require__(51);
+// removed by extract-text-webpack-plugin
 
 /***/ })
-
-/******/ });
+/******/ ]);

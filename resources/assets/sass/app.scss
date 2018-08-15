@@ -81,3 +81,33 @@ hr, .navbar-divider {
 .has-overflow-y {
     overflow-y: auto;
 }
+
+@media (max-width: 1250px) {
+    html {
+        font-size: 80%;
+    }
+}
+
+@media (max-width: 963px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+@media (max-width: 880px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media (max-width: 820px) {
+    html {
+        font-size: 65%;
+    }
+}
+
+@media (max-width: 780px) {
+    html {
+        font-size: 60%;
+    }
+}
